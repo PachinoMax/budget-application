@@ -33,11 +33,12 @@ export const channelsReducer = (state = initialState, action: Action) => {
         ),
       }
     case "SET_CHANNEL_AMOUNT":
+      const channelsPayload = action.payload;
       return {
         ...state,
         channels: state.channels.map(channel => {
-          if (channel.id === action.payload.id) {
-            channel.amount = action.payload.amount;
+          if (channel.id === channelsPayload.id) {
+            channel.amount = channelsPayload.amount;
           }
           return channel;
         }
@@ -66,12 +67,12 @@ export const channelsReducer = (state = initialState, action: Action) => {
         ),
       }
     case "SET_CHANNEL_MONTH":
-      const monthAction = action.payload.months;
-      const channelAction = action.payload.channel
+      const monthAction = action.payload.newMonth;
+      const channelAction = action.payload.id
       return {
         ...state,
         channels: state.channels.map(channel => {
-          if (channel.id === channelAction.id) {
+          if (channel.id === channelAction) {
             channel.months = channel.months.map(month => {
               if (month.name === monthAction.name) {
                 month.value = monthAction.value;

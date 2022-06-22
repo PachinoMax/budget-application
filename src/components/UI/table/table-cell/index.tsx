@@ -16,6 +16,7 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
   const dispatch = useDispatch();
   const channel = useTypedSelector(getChannel(props.channel.id));
   const [isEditing, setIsEditing] = useState(false);
+  const [editIconShow, setEditIconShow] = useState(false);
   const [value, setValue] = useState(props.amount);
   const [editedValue, setEditedValue] = useState(props.amount);
 
@@ -33,7 +34,10 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
   }
 
   return (
-    <CellContainer>
+    <CellContainer
+    onMouseEnter={() => !isEditing && setEditIconShow(true)}
+    onMouseLeave={() => setEditIconShow(false)}
+    >
       <TableCellContainer>
         <TableCellTitle>
           {props.month} {` `} {getCurrentYear()}
@@ -46,10 +50,12 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
           allowNegative={false}
           thousandSeparator={true}
           prefix="$"
-          onChange={handleChange} />
+          onChange={handleChange}
+          isEditing={isEditing}
+           />
         {(isEditing || channel?.allocation === "Manual") && (
           <EditIcon
-            style={isEditing || channel?.allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
+            style={!editIconShow || channel?.allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
             onClick={() => setIsEditing(!isEditing)}
           />
         )}

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { DotsHorizontalRounded } from "@styled-icons/boxicons-regular/DotsHorizontalRounded"
 
-export const StyledTableDots = styled(DotsHorizontalRounded)`
+export const StyledTableDots = styled.div`
   display: flex;
   position: absolute;
   width: 16px;
@@ -9,10 +8,13 @@ export const StyledTableDots = styled(DotsHorizontalRounded)`
   align-items: center;
   margin: auto 15px;
   right: 0;
+  background-image: url(./icons/dots.png);
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1;
   &:hover {
-    opacity: 0.8;
+    opacity: 50%;
   }
 `;
 
@@ -24,8 +26,8 @@ export const OptionsContainer = styled.div`
   flex-direction: column;
   width: 156px;
   height: 92px;
-  right: 2%;
-  top: 5%;
+  right: 0;
+  top: 70%;
   z-index: 1;
   font-weight: 500;
   font-size: 14px;

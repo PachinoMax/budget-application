@@ -17,6 +17,5 @@ export const InfoTooltip = styled.div<{ show: boolean }>((props: { show: boolean
   cursor: "pointer",
   margin: "20px",
   zIndex: 1,
-  whiteSpace: "pre-wrap",
 })
 );

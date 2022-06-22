@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1366px;
+  max-width: 1440px;
   width: 100%;
-  margin: 35px 50px 15px 50px;
+  margin: 30px auto;
 `;
 
 export const Title = styled.div`
@@ -44,7 +44,6 @@ export const Subtitle = styled.div`
   grid-area: Subtitle;
   width: 678px;
   height: 42px;
-  
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
@@ -53,7 +52,7 @@ export const Subtitle = styled.div`
 
 export const LinkContainer = styled.div`
   display: flex;
-  max-width: 1366px;
+  max-width: 1440px;
   height: 52px;
   width: 100%;
   margin: 40px 0 15px;

@@ -1,5 +1,5 @@
 import Options from "components/UI/options";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { OptionsContainer, StyledTableDots } from "./style";
 
 type Props = {
@@ -8,25 +8,46 @@ type Props = {
 }
 
 export default function TableDots(props: Props): React.ReactElement {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
 
-  const openOptions = () => setIsOpen(!isOpen);
+  useEffect(() => {
+    document.addEventListener("click", () => {
+      setIsOpenPopup(false);
+    });
 
-  const onEdit = () => {
+    return () => {
+      document.removeEventListener("click", () => {
+        setIsOpenPopup(false);
+      });
+    };
+  }, []);
+
+  const openOptions = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    if (isOpenPopup) {
+      setIsOpenPopup(false);
+    } else {
+      setIsOpenPopup(true);
+    }
+  };
+
+  const onEdit = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
     props.handleEdit();
-    setIsOpen(false);
+    setIsOpenPopup(false);
   }
 
-  const onDelete = () => {
+  const onDelete = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
     props.handleDelete();
-    setIsOpen(false);
+    setIsOpenPopup(false);
   }
 
   return (
     <>
       <StyledTableDots onClick={openOptions} />
-      {isOpen && (
-        <OptionsContainer onMouseLeave={() => setIsOpen(false)}>
+      {isOpenPopup && (
+        <OptionsContainer onMouseLeave={() => setIsOpenPopup(false)}>
           <Options onClick={onEdit}> Edit </Options>
           <Options onClick={onDelete}> Delete </Options>
         </OptionsContainer>

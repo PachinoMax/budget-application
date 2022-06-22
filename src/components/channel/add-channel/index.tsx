@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Button from 'components/UI/button';
-import BaseModalWrapper from 'components/UI/modal/modal-wrapper';
 import { ButtonContainer, InputElement } from './style';
 import { useDispatch } from 'react-redux';
 import { months } from 'helpers/constants';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from "uuid";
+import { Modal } from 'components/UI/modal/modal';
 
 export interface AddChannelArgs {
   channelName: string;
@@ -67,15 +67,20 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
     navigate('tab1');
   }
 
+  const closed = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    e.persist();
+    onClose();
+  }
+
+
   return (
-    <BaseModalWrapper
-      onBackdropClick={onClose}
-      isModalVisible={isModalVisible}
-      header="Enter channelName"
-      ContainerComponent={
-        () => (
-          <>
-            <InputElement
+    <Modal
+      isVisible={isModalVisible}
+      onBackdropClick={closed}
+      children={
+        <>
+             <InputElement
               value={channelName}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChannelName(e.target.value)}
               onKeyDown={onKeyDown}
@@ -86,7 +91,6 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
               <Button onClick={handleClose}>Cancel</Button>
             </ButtonContainer>
           </>
-        )
       }
     />
   );

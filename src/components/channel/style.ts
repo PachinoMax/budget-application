@@ -12,12 +12,13 @@ export const ChannelContainer = styled.div`
   display: flex;
   position: relative;
   justify-content: flex-start;
-  width: 1366px;
+  width: 1440px;
   height: 52px;
   margin: 5px auto;
   background: #f6f7fb;
   border: 1px solid rgba(178, 187, 213, 0.5);
   border-radius: 4px 4px 0px 0px;
+  cursor: pointer;
 `;
 
 export const ChannelTitle = styled.div`
@@ -33,7 +34,7 @@ export const ChannelTitle = styled.div`
 `;
 
 export const BudgetContainer = styled.div`
-  width: 1366px;
+  width: 1440px;
   height: 581px;
   margin: 0 auto;
   border: 1px solid rgba(178, 187, 213, 0.5);

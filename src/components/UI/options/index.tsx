@@ -3,7 +3,7 @@ import { Option } from "./style";
 
 type Props = {
   children: React.ReactNode;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 export default function Options({ children, onClick }: Props): React.ReactElement {

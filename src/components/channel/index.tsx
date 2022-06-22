@@ -37,19 +37,23 @@ export default function Channel(props: { channel: IChannel }): ReactElement {
 
   return (
     <>
-      <ChannelContainer>
-        <UpDownToggle isUp={isOpen} onClick={openChannel} />
+      <ChannelContainer onClick={openChannel}>
+        <UpDownToggle isUp={isOpen}/>
         <ChannelIcon />
         {!isEdit && <ChannelTitle>{name}</ChannelTitle>}
-        {isEdit &&
-          <input
+        {isEdit && isOpen && (
+          <ChannelTitle>
+            <input
             value={name}
             onKeyDown={onKeyDown}
             onBlur={() => { setIsEdit(false) }}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
             onClick={(e: React.MouseEvent<HTMLInputElement, MouseEvent>) => e.stopPropagation()} />
-        }
-        <TableDots handleDelete={onDelete} handleEdit={onEdit} />
+          </ChannelTitle>
+        )}
+        {isOpen && (
+          <TableDots handleDelete={onDelete} handleEdit={onEdit} />
+        )}
       </ChannelContainer>
       {isOpen && (
         <BudgetContainer>

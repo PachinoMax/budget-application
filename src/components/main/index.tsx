@@ -5,10 +5,11 @@ import AddButton from 'components/UI/button';
 import AddChannelModal from 'components/channel/add-channel';
 
 export default function Main(): ReactElement {
-  const [isModalVisible, setIsModalVisible] = useState(false)
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  
   const addChannel = () => {
     setIsModalVisible(true);
+
   }
 
   const onBackdropClick = () => {

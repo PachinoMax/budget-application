@@ -21,4 +21,5 @@ export const SwitchOption = styled.div<{active: boolean}>((props: {active : bool
   lineHeight: "18px",
   textAlign: "center",
   color: props.active ? "#2a3558" : "#707EA7",
+  margin: "0 0 0 -5px",
 }));
