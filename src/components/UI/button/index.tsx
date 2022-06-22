@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonContainer } from "./style";
+import { Button } from "./style";
 
 type Props = {
   children: React.ReactNode;
@@ -7,9 +7,5 @@ type Props = {
 }
 
 export default function AddButton({ children, onClick }: Props): React.ReactElement {
-  return (
-    <ButtonContainer onClick={onClick}>
-      {children}
-    </ButtonContainer>
-  );
+  return <Button onClick={onClick}>{children}</Button>;
 };
