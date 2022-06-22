@@ -33,21 +33,7 @@ export const CellContainer = styled.div`
   height: 100%;
 `;
 
-// export const Item = styled(NumberFormat)`
-// 	background: none;
-// 	width: 80px;
-// 	height: 20px;
-// 	font-weight: 500;
-// 	font-size: 14px;
-// 	line-height: 20px;
-// 	margin: 23px auto;
-// 	color: #222a41;
-// 	box-sizing: border-box;
-// 	border-radius: 4px;
-// 	border: none;
-// `;
-
-export const Item = styled(NumberFormat)((props: { isEditing: boolean }) => ({
+export const Item = styled(NumberFormat)((props: { editing: number }) => ({
   width: '80px',
   height: '20px',
   background: 'none',
@@ -57,9 +43,9 @@ export const Item = styled(NumberFormat)((props: { isEditing: boolean }) => ({
   margin: '23px auto',
   color: '#222a41',
   borderRadius: '4px',
-  border: props.isEditing ? '1px solid rgba(178, 187, 213, 0.5)' : 'none',
-  padding: props.isEditing ? '16px 3px' : '0',
-  transform: props.isEditing ? 'translate(-24px, -6px)' : 'translate(0)',
+  border: props.editing ===1 ? '1px solid rgba(178, 187, 213, 0.5)' : 'none',
+  padding: props.editing ===1 ? '16px 3px' : '0',
+  transform: props.editing ===1 ? 'translate(-24px, -6px)' : 'translate(0)',
 }));
 
 export const SaveIcon = styled(CheckCircleFill)`

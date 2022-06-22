@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const ChannelIcon = styled.div(() => ({
-  backgroundImage: `url(./icons/channel-icon.png)`,
-  backgroundSize: "cover",
+  backgroundImage: `url(./icons/channel-icon.svg)`,
+  backgroundSize: "contain",
   width: "36px",
   height: "36px",
   margin: "auto 12px auto 15px",
+  backgroundColor: '#FF9602',
 }));
 
 export const ChannelContainer = styled.div`

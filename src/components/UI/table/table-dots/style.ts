@@ -8,7 +8,7 @@ export const StyledTableDots = styled.div`
   align-items: center;
   margin: auto 15px;
   right: 0;
-  background-image: url(./icons/dots.png);
+  background-image: url(./icons/dots.svg);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;

@@ -23,11 +23,12 @@ export const Subtitle = styled.div`
 `;
 
 export const Icon = styled.div(() => ({
-  backgroundImage: `url(./icons/channel-icon.png)`,
+  backgroundImage: `url(./icons/channel-icon.svg)`,
   backgroundSize: "cover",
   width: "46px",
   height: "36px",
   margin: "auto 12px 30px 0px",
+  backgroundColor: "#FF9602",
 }));
 
 export const Name = styled.div`

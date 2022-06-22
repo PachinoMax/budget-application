@@ -51,7 +51,7 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
           thousandSeparator={true}
           prefix="$"
           onChange={handleChange}
-          isEditing={isEditing}
+          editing={isEditing ? 1 : 0}
            />
         {(isEditing || channel?.allocation === "Manual") && (
           <EditIcon
