@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
-import { Title, SetupTitle, Subtitle, GridContainer } from './style';
+import { Title, SetupTitle, Subtitle, GridContainer, ButtonWrapper } from './style';
 import AddButton from 'components/UI/button';
 import AddChannelModal from 'components/channel/add-channel';
 
@@ -25,10 +25,12 @@ export default function Main(): ReactElement {
           Setup your added channels by adding baseline budgets out of your total
           budget. See the forecast impact with the help of tips and insights.
         </Subtitle>
+        <ButtonWrapper>
         <AddButton onClick={addChannel}><FiPlus />
           Add Channel
           <AddChannelModal onClose={onBackdropClick} isModalVisible={isModalVisible} />
         </AddButton>
+        </ButtonWrapper>
       </GridContainer>
     </>
   );

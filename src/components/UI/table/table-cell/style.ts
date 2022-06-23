@@ -18,7 +18,7 @@ export const TableCellContainer = styled.div`
 export const TableCellTitle = styled.div`
   width: 70px;
   height: 16px;
-  margin: 20px 0 33px 0;
+  margin: 20px 0 31px 0px;
   font-weight: 900;
   font-size: 11px;
   line-height: 16px;
@@ -27,10 +27,14 @@ export const TableCellTitle = styled.div`
 `;
 
 export const CellContainer = styled.div`
-  display: flex;
-  overflow: hidden;
-  width: 1000px;
-  height: 100%;
+display: flex;
+position: relative;
+justify-content: space-between;
+width: 75px;
+height: 128px;
+flex-direction: column;
+cursor: pointer;
+margin: 0 12px 0 25px;
 `;
 
 export const Item = styled(NumberFormat)((props: { editing: number }) => ({
@@ -40,22 +44,22 @@ export const Item = styled(NumberFormat)((props: { editing: number }) => ({
   fontSize: '14px',
   fontWeight: 500,
   lineHeight: '20px',
-  margin: '23px auto',
+  margin: '22px auto',
   color: '#222a41',
-  borderRadius: '4px',
+  borderRadius: '3px',
   border: props.editing ===1 ? '1px solid rgba(178, 187, 213, 0.5)' : 'none',
-  padding: props.editing ===1 ? '16px 3px' : '0',
-  transform: props.editing ===1 ? 'translate(-24px, -6px)' : 'translate(0)',
+  padding: props.editing ===1 ? '15px 15px' : '0',
+  transform: props.editing ===1 ? 'translate(-24px, -3px)' : 'translate(0)',
 }));
 
 export const SaveIcon = styled(CheckCircleFill)`
   display: flex;
   position: absolute;
-  width: 15px;
+  width: 20px;
   height: 100%;
   align-items: center;
-  margin: auto 15px;
-  left: 15%;
+  margin: -1px 14px;
+  left: 60%;
   top: 30%;
   cursor: pointer;
   z-index: 1;
@@ -68,11 +72,11 @@ export const SaveIcon = styled(CheckCircleFill)`
 export const CancelIcon = styled(Cancel)`
   display: flex;
   position: absolute;
-  width: 18px;
+  width: 22px;
   height: 100%;
   align-items: center;
-  margin: auto 15px;
-  left: 40%;
+  margin: -1px 14px;
+  left: 89%;
   top: 30%;
   cursor: pointer;
   z-index: 1;
@@ -89,7 +93,7 @@ export const EditIcon = styled(Edit)`
   height: 100%;
   align-items: center;
   margin: auto 15px;
-  left: 40%;
+  left: 65%;
   top: 30%;
   cursor: pointer;
   z-index: 1;

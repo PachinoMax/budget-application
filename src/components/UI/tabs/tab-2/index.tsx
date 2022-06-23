@@ -5,6 +5,9 @@ import { IChannel } from "redux/interfaces";
 export default function Tab2(): React.ReactElement {
   const channelsArray = useTypedSelector((state) => state.channels.channels);
 
+  console.log("channelsArray in tab2", channelsArray);
+  
+
   return (
     <>
     {channelsArray.map((channel: IChannel) => {

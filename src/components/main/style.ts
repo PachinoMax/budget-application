@@ -37,7 +37,7 @@ export const SetupTitle = styled.div`
   font-size: 18px;
   line-height: 25px;
   color: #182033;
-  margin: 10px 0px;
+  margin-top: 17px;
 `;
 
 export const Subtitle = styled.div`
@@ -48,6 +48,7 @@ export const Subtitle = styled.div`
   font-size: 14px;
   line-height: 21px;
   color: #99A4C2;
+  margin-top: 4px;
 `;
 
 export const LinkContainer = styled.div`
@@ -70,3 +71,7 @@ export const Link = styled(NavLink)((props: { active: boolean }) => ({
   color: '#000000',
   borderBottom: props.active ? '2px solid #000000' : 'none'
 }));
+
+export const ButtonWrapper = styled.div`
+  margin: 6px 105px 0 0;
+`;

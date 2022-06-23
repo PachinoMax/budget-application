@@ -26,18 +26,6 @@ export default function Frequency(props: FrequencyProps): React.ReactElement {
     dispatch({ type: 'SET_CHANNEL_FREQUENCY', payload: { id: props.id, frequency: selectedFrequency.innerText } });
   }
 
-  useEffect(() => {
-    if (frequency === "Monthly") {
-      dispatch({ type: 'SET_ALLOCATION', payload: 'Manual' });
-      dispatch({ type: 'SET_CHANNEL_ALLOCATION', payload: { id: props.id, allocation: 'Manual' } });
-    } else {
-      dispatch({ type: 'SET_ALLOCATION', payload: 'Equal' });
-      dispatch({ type: 'SET_CHANNEL_ALLOCATION', payload: { id: props.id, allocation: 'Equal' } });
-    }
-    dispatch({ type: "SET_FREQUENCY", payload: selected });
-    dispatch({ type: 'SET_CHANNEL_FREQUENCY', payload: { id: props.id, frequency: selected } });
-  }, [selected, dispatch, props.frequency, props.id, frequency]);
-
   return (
     <FrequencyContainer>
       <FrequencyTitle>

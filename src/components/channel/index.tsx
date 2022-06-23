@@ -13,6 +13,8 @@ export default function Channel(props: { channel: IChannel }): ReactElement {
   const [isOpen, setIsOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
+  console.log('props.channel',props.channel);
+
   const openChannel = () => {
     setIsOpen(!isOpen);
   }

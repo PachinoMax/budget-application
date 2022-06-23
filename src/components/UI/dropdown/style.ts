@@ -14,6 +14,7 @@ export const DropdownContainer = styled.div`
   box-shadow: 0px 1px 2px #e6e8f0;
   border-radius: 3px;
   margin-top: 8px;
+  letter-spacing: 0.2px;
 `;
 
 export const DropdownItem = styled.div`
@@ -31,7 +32,7 @@ export const DropdownItem = styled.div`
   box-shadow: 0px 1px 2px #e6e8f0;
   border-radius: 3px;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 9px 14px;
   align-items: center;
   &:hover {
     background: #f6f7fb;
@@ -45,10 +46,10 @@ export const DropdownIcon = styled(TriangleDown)((props: { isOpen: boolean }) =>
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '20px',
-  height: '20px',
+  width: '16px',
+  height: '16px',
   color: '#B2BBD5',
-  margin: 'auto 10px',
+  margin: '0 -5px 0 0',
 }));
 
 export const DropdownMenu = styled.div`

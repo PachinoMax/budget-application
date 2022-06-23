@@ -67,7 +67,7 @@ export const channelsReducer = (state = initialState, action: Action) => {
         ),
       }
     case "SET_CHANNEL_MONTH":
-      const monthAction = action.payload.newMonth;
+      const monthAction = action.payload.newMonthValue;
       const channelAction = action.payload.id
       return {
         ...state,

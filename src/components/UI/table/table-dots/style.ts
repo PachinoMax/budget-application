@@ -24,10 +24,10 @@ export const OptionsContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 156px;
-  height: 92px;
-  right: 0;
-  top: 70%;
+  width: 154px;
+  height: 89px;
+  right: 1%;
+  top: 80%;
   z-index: 1;
   font-weight: 500;
   font-size: 14px;
@@ -36,4 +36,5 @@ export const OptionsContainer = styled.div`
   border: 1px solid rgba(178, 187, 213, 0.5);
   box-shadow: 0px 4px 16px rgba(24, 32, 51, 0.12);
   border-radius: 4px;
+  letter-spacing: 0.4px;
 `;

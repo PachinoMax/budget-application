@@ -4,8 +4,8 @@ export const BudgetSettingContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 1128px;
-  margin: 28px 0 0 32px;
+  width: 1120px;
+  margin: 29px 0 0 31px;
 `;
 
 export const InfoTooltip = styled.div<{ show: boolean }>((props: { show: boolean }) => ({

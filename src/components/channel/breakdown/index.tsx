@@ -7,6 +7,7 @@ type BreakdownProps = {
   allocation: string;
   months: IMonth[];
   id: string;
+  frequency: string;
 }
 
 export default function Breakdown(props: BreakdownProps): React.ReactElement {

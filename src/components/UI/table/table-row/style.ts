@@ -3,17 +3,16 @@ import styled from "styled-components";
 export const Title = styled.div`
   position: relative;
   max-width: 300px;
-  height: 128px;
+  height: 145px;
   display: flex;
   align-items: flex-end;
-  margin-left: 15px;
-  margin-top: 5px;
+  margin: 5px 0 0 15px;
 `;
 
 export const Subtitle = styled.div`
   position: absolute;
   height: 16px;
-  left: 41px;
+  left: 7px;
   top: 15px;
   font-weight: 700;
   font-size: 11px;
@@ -24,11 +23,11 @@ export const Subtitle = styled.div`
 
 export const Icon = styled.div(() => ({
   backgroundImage: `url(./icons/channel-icon.svg)`,
-  backgroundSize: "cover",
-  width: "46px",
+  backgroundSize: "contain",
+  width: "36px",
   height: "36px",
-  margin: "auto 12px 30px 0px",
-  backgroundColor: "#FF9602",
+  margin: "auto 17px 30px 0",
+  backgroundColor: '#FF9602',
 }));
 
 export const Name = styled.div`
@@ -40,12 +39,12 @@ export const Name = styled.div`
   font-size: 14px;
   line-height: 21px;
   color: #222a41;
-  margin: 0 0 40px 0;
+  margin: 0 0 37px 0;
 `;
 
 export const ScrollBlock = styled.div`
 	positon: relative;
-	width: 200px;
+	width: 100px;
 	height: 128px;
 	display: flex;
 	background: linear-gradient(
@@ -54,4 +53,37 @@ export const ScrollBlock = styled.div`
 	  rgba(112, 126, 167, 0.134454) 100%
 	);
 	opacity: 0.5;
+  margin: 0 0 15px 14px;
 `;
+
+export const ArrowIcon = styled.div<{isMoved:boolean}>((props: { isMoved: boolean }) => ({
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+	width: `10px`,
+	height: `6.25px`,
+	margin: "auto 72px",
+	transition: "0.5s",
+	backgroundImage: "url(./icons/arrow.svg)",
+	transform: `rotate(${props.isMoved ? "180deg" : "0deg"})`,
+	backgroundPosition: "center",
+	backgroundSize: "contain",
+	backgroundRepeat: "no-repeat",
+	top: "24px",
+	right: "78px",
+	position: "absolute",
+  cursor: "pointer",
+  }));
+
+export const TableCellContainerWrapper = styled.div`
+  display: flex;
+	overflow: hidden;
+	width: 1000px;
+	height: 100%;
+  `;
+
+export const TableCellItem = styled.div((props: {isMoved : boolean}) => ({
+    display: "flex",
+    transform: props.isMoved ? "translateX(-25%)" : "translateX(0)",
+    transition: "0.5s",
+  }));

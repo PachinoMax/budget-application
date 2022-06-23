@@ -21,7 +21,7 @@ export const FrequencyTitle = styled.div`
 
 export const FrequencyIcon = styled(InfoCircle)`
   position: absolute;
-  left: 56%;
+  left: 55%;
   top: calc(50% - 6px);
   width: 12px;
   height: 12px;

@@ -13,13 +13,14 @@ export const ChannelContainer = styled.div`
   display: flex;
   position: relative;
   justify-content: flex-start;
-  width: 1440px;
+  width: 1340px;
   height: 52px;
-  margin: 5px auto;
   background: #f6f7fb;
   border: 1px solid rgba(178, 187, 213, 0.5);
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 4px;
   cursor: pointer;
+  margin: 5px 0 0 0;
+  
 `;
 
 export const ChannelTitle = styled.div`
@@ -35,9 +36,9 @@ export const ChannelTitle = styled.div`
 `;
 
 export const BudgetContainer = styled.div`
-  width: 1440px;
+  width: 1340px;
   height: 581px;
-  margin: 0 auto;
+  margin: 0 0 0 0;
   border: 1px solid rgba(178, 187, 213, 0.5);
   border-radius: 0px 0px 4px 4px;
 `;

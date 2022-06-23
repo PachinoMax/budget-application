@@ -18,11 +18,12 @@ export const Title = styled.div`
   color: #2a3558;
   margin-top: 2px;
   margin-bottom: 8px;
+  letter-spacing: -0.25px;
 `;
 
 export const BaselineIcon = styled(InfoCircle)`
   position: absolute;
-  left: 78%;
+  left: 72%;
   top: calc(50% - 6px);
   width: 12px;
   height: 12px;

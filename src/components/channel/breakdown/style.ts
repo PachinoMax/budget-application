@@ -12,9 +12,9 @@ export const BreakdownContainer = styled.div`
 export const Title = styled.div`
   width: 144px;
   height: 24px;
-  left: 106px;
+  left: 1px;
   top: 516px;
-  margin: 22px 24px 10px;
+  margin: 23px 22px 10px;
   font-weight: 800;
   font-size: 16px;
   line-height: 24px;

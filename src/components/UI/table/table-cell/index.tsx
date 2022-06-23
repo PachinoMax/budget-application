@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { IChannel } from "redux/interfaces";
 import { useTypedSelector } from "redux/reducers";
 import { getCurrentYear, getChannel } from "utils";
-import { CellContainer, TableCellContainer, TableCellTitle, Item, SaveIcon, CancelIcon, EditIcon } from "./style";
+import { CellContainer, TableCellTitle, Item, SaveIcon, CancelIcon, EditIcon } from "./style";
 
 type TableCellProps = {
   month: string;
@@ -14,7 +14,7 @@ type TableCellProps = {
 
 export default function TableCell(props: TableCellProps): React.ReactElement {
   const dispatch = useDispatch();
-  const channel = useTypedSelector(getChannel(props.channel.id));
+  const channel = useState(props.channel);
   const [isEditing, setIsEditing] = useState(false);
   const [editIconShow, setEditIconShow] = useState(false);
   const [value, setValue] = useState(props.amount);
@@ -28,8 +28,8 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
 
   const handleSave = () => {
     setValue(editedValue);
-    const newMonth = { name: props.month, value: editedValue };
-    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.channel.id, newMonth } });
+    const newMonthValue = { name: props.month, value: editedValue };
+    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.channel.id, newMonthValue } });
     setIsEditing(false);
   }
 
@@ -38,13 +38,12 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
     onMouseEnter={() => !isEditing && setEditIconShow(true)}
     onMouseLeave={() => setEditIconShow(false)}
     >
-      <TableCellContainer>
         <TableCellTitle>
           {props.month} {` `} {getCurrentYear()}
         </TableCellTitle>
         <Item
           value={isEditing ? editedValue : value}
-          disabled={channel?.allocation === "Equal" || !isEditing}
+          disabled={props.allocation === "Equal" || !isEditing}
           allowLeadingZeros={false}
           isNumericString={true}
           allowNegative={false}
@@ -53,9 +52,9 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
           onChange={handleChange}
           editing={isEditing ? 1 : 0}
            />
-        {(isEditing || channel?.allocation === "Manual") && (
+        {(isEditing || props.allocation === "Manual") && (
           <EditIcon
-            style={!editIconShow || channel?.allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
+            style={!editIconShow || props.allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
             onClick={() => setIsEditing(!isEditing)}
           />
         )}
@@ -66,7 +65,6 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
               onClick={() => setIsEditing(false)} />
           </>
         )}
-      </TableCellContainer>
     </CellContainer>
   );
 }

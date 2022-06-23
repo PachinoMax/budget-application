@@ -25,6 +25,7 @@ export const Item = styled(NumberFormat)((props: {disabled : boolean}) => ({
   boxShadow: "0px 1px 2px #e6e8f0",
   borderRadius: "3px",
   height: "40px",
-  width: "150px",
+  width: "156px",
+  padding: "0 15px",
   color: props.disabled ? "#99A4C2" : "#2A3558",
 }));

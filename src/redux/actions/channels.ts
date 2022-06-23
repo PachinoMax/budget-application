@@ -30,7 +30,7 @@ export const setChannelFrequency = (payload: IChannel) => ({
   payload
 }as const);
 
-export const setChannelMonth = (payload: {id: string, newMonth: IMonth}) => ({
+export const setChannelMonth = (payload: {id: string, newMonthValue: IMonth}) => ({
   type: "SET_CHANNEL_MONTH",
   payload
 }as const);
