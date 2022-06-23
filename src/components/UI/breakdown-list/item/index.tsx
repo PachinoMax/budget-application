@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { IMonth } from "redux/interfaces";
 import { getCurrentYear } from "utils";
@@ -17,6 +17,10 @@ export default function BreakdownItem(props: BreakdownItemProps): React.ReactEle
   const { month, amount, allocation } = props;
   const [value, setValue] = useState(amount);
 
+  useEffect(() => {
+    setValue(amount);
+  }, [amount])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value.replace('$', '').split(",").join(""));
     const newMonthValue = { name: month, value: newValue };
@@ -31,7 +35,7 @@ export default function BreakdownItem(props: BreakdownItemProps): React.ReactEle
         {month} {getCurrentYear()}
       </ItemMonth>
       <Item
-        value={value}
+        value={value === 0 ? '' : value}
         disabled={allocation === "Equal"}
         allowLeadingZeros={false}
         isNumericString={true}
@@ -39,6 +43,7 @@ export default function BreakdownItem(props: BreakdownItemProps): React.ReactEle
         thousandSeparator={true}
         prefix="$"
         onChange={handleChange}
+        placeholder="$0"
       />
     </ItemContainer>
   );

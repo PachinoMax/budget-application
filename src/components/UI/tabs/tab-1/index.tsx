@@ -7,12 +7,6 @@ export default function Tab1(): React.ReactElement {
   const channelsArray = useTypedSelector((state) => state.channels.channels);
   const [channels, setChannels] = useState(channelsArray);
 
-  console.log('channelsArray', channelsArray);
-  
-
-  // useMemo(() => {
-  //   setChannels(channelsArray);
-  // } , [channelsArray]);
   useEffect(() => {
     setChannels(channelsArray);
   } , [channelsArray]);

@@ -11,6 +11,8 @@ interface TableProps {
 
 export default function Table(props: TableProps): React.ReactElement {
   const channel = useTypedSelector(getChannel(props.channel.id));
+  console.log("channel in table", props.channel);
+  
   
   return (
     <Container>

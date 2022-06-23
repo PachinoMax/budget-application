@@ -62,7 +62,7 @@ export const ArrowIcon = styled.div<{isMoved:boolean}>((props: { isMoved: boolea
 	alignItems: "center",
 	width: `10px`,
 	height: `6.25px`,
-	margin: "auto 72px",
+	margin: "auto 5px",
 	transition: "0.5s",
 	backgroundImage: "url(./icons/arrow.svg)",
 	transform: `rotate(${props.isMoved ? "180deg" : "0deg"})`,

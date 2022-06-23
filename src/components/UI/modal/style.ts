@@ -17,7 +17,7 @@ export const Overlay = styled.div`
   text-align: center;
   top: 40%;
   transform: translate(-50%, -50%);
-  overflow-y: scroll;
+  overflow-y: hidden;
 `
 
 export const Backdrop = styled.div`

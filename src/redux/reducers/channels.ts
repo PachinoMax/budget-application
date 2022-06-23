@@ -85,6 +85,20 @@ export const channelsReducer = (state = initialState, action: Action) => {
         }
         ),
       }
+    case "SET_CHANNEL_OPEN":
+      const channelOpenPayload = action.payload;
+      return {
+        ...state,
+        channels: state.channels.map(channel => {
+          if (channel.id === channelOpenPayload.id) {
+            channel.isOpen = !channel.isOpen;
+          } else {
+            channel.isOpen = false;
+          }
+          return channel;
+        }
+        ),
+      }
     default:
       return state
   }

@@ -35,5 +35,10 @@ export const setChannelMonth = (payload: {id: string, newMonthValue: IMonth}) =>
   payload
 }as const);
 
-export type Action = ReturnType<typeof addChannel | typeof deleteChannel | typeof editChannelName | typeof setChannelAmount | typeof setChannelAllocation | typeof setChannelFrequency | typeof setChannelMonth>;
+export const setChannelOpen = (payload: {id: string}) => ({
+  type: "SET_CHANNEL_OPEN",
+  payload
+}as const);
+
+export type Action = ReturnType<typeof addChannel> | ReturnType<typeof deleteChannel> | ReturnType<typeof editChannelName> | ReturnType<typeof setChannelAmount> | ReturnType<typeof setChannelAllocation> | ReturnType<typeof setChannelFrequency> | ReturnType<typeof setChannelMonth> | ReturnType<typeof setChannelOpen>;
 

@@ -4,6 +4,7 @@ export interface IChannel {
   allocation: string;
   amount: number;
   frequency: string;
+  isOpen: boolean;
   months: IMonth[];
 }
 

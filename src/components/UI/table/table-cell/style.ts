@@ -93,8 +93,8 @@ export const EditIcon = styled(Edit)`
   height: 100%;
   align-items: center;
   margin: auto 15px;
-  left: 65%;
-  top: 30%;
+  left: 75%;
+  top: 28%;
   cursor: pointer;
   z-index: 1;
   color: #B2BBD5;

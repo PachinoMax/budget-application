@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TableDots from "components/UI/table/table-dots";
 import UpDownToggle from "components/UI/toogle/up-down-toogle/up-down-toggle";
@@ -10,13 +10,22 @@ import { IChannel } from "redux/interfaces";
 export default function Channel(props: { channel: IChannel }): ReactElement {
   const dispatch = useDispatch();
   const [name, setName] = useState(props.channel.name);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(props.channel.isOpen);
   const [isEdit, setIsEdit] = useState(false);
 
-  console.log('props.channel',props.channel);
+  useEffect(() => {
+    setIsOpen(props.channel.isOpen);
+  }
+  , [props.channel.isOpen]);
 
   const openChannel = () => {
     setIsOpen(!isOpen);
+    dispatch({
+      type: "SET_CHANNEL_OPEN",
+      payload: {
+        id: props.channel.id
+      },
+    });
   }
 
   const onEdit = () => {

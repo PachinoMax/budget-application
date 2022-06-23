@@ -20,18 +20,15 @@ type BaselineProps = {
 export default function Baseline(props: BaselineProps): React.ReactElement {
   const dispatch = useDispatch();
   const channel = useTypedSelector(getChannel(props.id));
-  console.log('channel in baseline', channel);
-  
-  const frequency = channel?.frequency;
-  const months = channel?.months;
+  const months = channel?.months
   const [tooltipShow, setTooltipShow] = useState(false);
   const [value, setValue] = useState(props.amount);
 
-  console.log('props baseline', props);
-
   useEffect(() => {
-    let sum = 0;
+    let sum = props.amount;
     if (props.frequency === "Quarterly") {
+      console.log('sdsd', props.months);
+      
       quarters.forEach((month, index) => {sum += props.months[index].value;});
     } else {
       props.months.forEach(month => {sum += month.value;});
@@ -39,7 +36,7 @@ export default function Baseline(props: BaselineProps): React.ReactElement {
     setValue(sum);
     dispatch({ type: 'SET_AMOUNT', payload: sum });
     dispatch({ type: 'SET_CHANNEL_AMOUNT', payload: { id: props.id, amount: sum } });
-  }, [props.frequency, props.id, props.months, dispatch]);
+  }, [months]);
 
   const handleChangeAmount = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = Number(e.target.value.split(",").join(""));
@@ -60,10 +57,11 @@ export default function Baseline(props: BaselineProps): React.ReactElement {
           {`Chosen budget frequency value`}
         </InfoTooltip>
       </Title>
+      
       <Input
         disabled={channel?.allocation === "Manual"}
         handleChange={handleChangeAmount}
-        value={value}
+        value={channel?.allocation === 'Equal'? props.amount : value}
       />
     </BaselineContainer>
   );

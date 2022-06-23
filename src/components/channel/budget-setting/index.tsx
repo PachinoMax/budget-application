@@ -13,7 +13,6 @@ type BudgetSettingProps = {
 }
 
 export default function BudgetSetting(props: BudgetSettingProps) : React.ReactElement {
-  console.log('budgetSetting', props);
   return (
     <BudgetSettingContainer>
       <Frequency {...props}/>

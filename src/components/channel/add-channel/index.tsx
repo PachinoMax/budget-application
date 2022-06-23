@@ -3,7 +3,6 @@ import Button from 'components/UI/button';
 import { ButtonContainer, InputElement } from './style';
 import { useDispatch } from 'react-redux';
 import { months } from 'helpers/constants';
-import { useNavigate } from 'react-router-dom';
 import { v4 } from "uuid";
 import { Modal } from 'components/UI/modal/modal';
 
@@ -22,7 +21,6 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
 }) => {
   const [channelName, setChannelName] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
@@ -33,6 +31,7 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
         amount: 0,
         months: months,
         id: v4(),
+        isOpen: false
       }
       dispatch({
         type: 'ADD_CHANNEL',
@@ -40,7 +39,6 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
       });
       setChannelName('');
       onClose();
-      navigate('tab1');
     }
   }
 
@@ -57,6 +55,7 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
       amount: 0,
       months: months,
       id: v4(),
+      isOpen: false,
     }
     dispatch({
       type: 'ADD_CHANNEL',
@@ -64,7 +63,6 @@ const AddChannelModal: React.FC<AddChannelModalProps> = ({
     });
     setChannelName('');
     onClose();
-    navigate('tab1');
   }
 
   const closed = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

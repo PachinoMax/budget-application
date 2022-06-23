@@ -15,13 +15,14 @@ export default function Input({
   return (
     <>
       <InputElement
-        value={value}
+        value={value === 0 ? "" : value}
         onChange={handleChange}
         disabled={disabled}
         allowLeadingZeros={false}
-        isNumericString={true}
+        isNumericString={false}
         allowNegative={disabled ? false : true}
         thousandSeparator={true}
+        placeholder="0"
       />
     </>
   );
