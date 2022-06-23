@@ -12,10 +12,6 @@ export default function Tab2(): React.ReactElement {
     setChannels(channelsArray);
   }
   , [channelsArray]);
-  
-  console.log("channelsArray in tab2", channels.map((channel: IChannel) => {
-    return channel.months;
-    }));
 
   return (
     <>

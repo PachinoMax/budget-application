@@ -12,8 +12,6 @@ export default function TableRow(props: TableRowProps): React.ReactElement {
   const { name, frequency, months } = props.channel;
   const [isMoved, setIsMoved] = useState(false);
 
-  console.log("channel in table", props.channel);
-
   return (
     <>
       <Title>
@@ -32,7 +30,6 @@ export default function TableRow(props: TableRowProps): React.ReactElement {
           }
           )}
           {frequency === 'Quarterly' && quarters.map((quarter, index) => {
-            console.log("quarter", quarter);
             return (
               <TableCell key={index} month={quarter.name} amount={props.channel.amount} allocation={props.channel.allocation} channel={props.channel} />
             );
