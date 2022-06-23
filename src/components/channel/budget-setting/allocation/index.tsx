@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import Switch from "components/UI/switch";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AllocationContainer, AllocationIcon, Title } from "./style";
 import { InfoTooltip } from '../style';

@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import { quarters } from "helpers/constants";
-import { useState } from "react";
 import { IChannel } from "redux/interfaces";
 import TableCell from "../table-cell";
 import { ArrowIcon, Icon, Name, ScrollBlock, Subtitle, Title, TableCellContainerWrapper, TableCellItem } from "./style";
@@ -9,7 +9,7 @@ type TableRowProps = {
 }
 
 export default function TableRow(props: TableRowProps): React.ReactElement {
-  const { name, frequency, months } = props.channel;
+  const { name, frequency, amount, allocation, months } = props.channel;
   const [isMoved, setIsMoved] = useState(false);
 
   return (
@@ -23,15 +23,15 @@ export default function TableRow(props: TableRowProps): React.ReactElement {
       <TableCellContainerWrapper>
         <TableCellItem isMoved={isMoved}
         >
-          {frequency !== 'Quarterly' && props.channel.months.map((month, index) => {
+          {frequency !== 'Quarterly' && months.map((month, index) => {
             return (
-              <TableCell key={index} month={month.name} amount={props.channel.amount} allocation={props.channel.allocation} channel={props.channel} />
+              <TableCell key={index} month={month} amount={amount} allocation={allocation} channel={props.channel} frequency={frequency}/>
             );
           }
           )}
           {frequency === 'Quarterly' && quarters.map((quarter, index) => {
             return (
-              <TableCell key={index} month={quarter.name} amount={props.channel.amount} allocation={props.channel.allocation} channel={props.channel} />
+              <TableCell key={index} quarter={quarter.name} month={months[index]} amount={amount} allocation={allocation} channel={props.channel} frequency= {frequency} />
             );
           }
           )}

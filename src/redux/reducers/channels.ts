@@ -66,24 +66,24 @@ export const channelsReducer = (state = initialState, action: Action) => {
         }
         ),
       }
-    case "SET_CHANNEL_MONTH":
-      const monthAction = action.payload.newMonthValue;
-      const channelAction = action.payload.id
+    case "SET_CHANNEL_MONTH":      
+      const monthAction = action.payload.months;
+      const channelAction = action.payload.id;
+      const channels = state.channels.map(channel => {
+        if (channel.id === channelAction) {
+          channel.months = channel.months.map(month => {
+            if (month.name === monthAction.name) {
+              month.value = monthAction.value;
+            }
+            return month;
+          }
+          );
+        }
+        return channel;
+      });
       return {
         ...state,
-        channels: state.channels.map(channel => {
-          if (channel.id === channelAction) {
-            channel.months = channel.months.map(month => {
-              if (month.name === monthAction.name) {
-                month.value = monthAction.value;
-              }
-              return month;
-            }
-            );
-          }
-          return channel;
-        }
-        ),
+        channels,
       }
     case "SET_CHANNEL_OPEN":
       const channelOpenPayload = action.payload;

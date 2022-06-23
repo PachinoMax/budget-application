@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { IMonth } from "redux/interfaces";
 import { getCurrentYear } from "utils";
@@ -9,6 +9,7 @@ type BreakdownItemProps = {
   amount: number;
   allocation: string;
   id: string;
+  quarter?: string;
   changeChannelMonth: (month: IMonth) => void;
 };
 
@@ -23,11 +24,10 @@ export default function BreakdownItem(props: BreakdownItemProps): React.ReactEle
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value.replace('$', '').split(",").join(""));
-    const newMonthValue = { name: month, value: newValue };
     setValue(newValue);
-    dispatch({ type: "SET_MONTH", payload: newMonthValue });
-    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.id, newMonthValue } });
-    props.changeChannelMonth(newMonthValue);
+    dispatch({ type: "SET_MONTH", payload: newValue });
+    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.id, months: {name: month, value: newValue} } });
+    props.changeChannelMonth({name: month, value: newValue});
   }
   return (
     <ItemContainer>

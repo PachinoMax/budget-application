@@ -1,22 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { IChannel } from "redux/interfaces";
-import { getCurrentYear, getChannel } from "utils";
+import { IChannel, IMonth } from "redux/interfaces";
+import { getCurrentYear } from "utils";
 import { CellContainer, TableCellTitle, Item, SaveIcon, CancelIcon, EditIcon } from "./style";
 
 type TableCellProps = {
-  month: string;
+  month: IMonth;
   amount: number;
   allocation: string;
   channel: IChannel;
+  quarter?: string;
+  frequency: string;
 };
 
 export default function TableCell(props: TableCellProps): React.ReactElement {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editIconShow, setEditIconShow] = useState(false);
-  const [value, setValue] = useState(props.amount);
-  const [editedValue, setEditedValue] = useState(props.amount);
+  const {month, quarter, allocation, amount, frequency} = props;
+  const [value, setValue] = useState(amount);
+  const [editedValue, setEditedValue] = useState(amount);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(e.target.value.replace('$', '').split(",").join(""));
@@ -25,8 +28,8 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
 
   const handleSave = () => {
     setValue(editedValue);
-    const newMonthValue = { name: props.month, value: editedValue };
-    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.channel.id, newMonthValue } });
+    setEditedValue(value);
+    dispatch({ type: "SET_CHANNEL_MONTH", payload: { id: props.channel.id, months: {name: month.name, value: editedValue} } });
     setIsEditing(false);
   }
 
@@ -36,11 +39,11 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
       onMouseLeave={() => setEditIconShow(false)}
     >
       <TableCellTitle>
-        {props.month} {` `} {getCurrentYear()}
+        {quarter || month.name } {` `} {getCurrentYear()}
       </TableCellTitle>
-      {props.allocation === "Equal" && (
+      {allocation === "Equal" && (
         <Item
-          value={props.amount / 12}
+          value={frequency === 'Quarterly' ? amount / 4 : amount / 12}
           disabled={!isEditing}
           allowLeadingZeros={false}
           isNumericString={true}
@@ -53,9 +56,9 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
         />
       )
       }
-      {props.allocation === "Manual" && (
+      {allocation === "Manual" && (
         <Item
-        value={isEditing ? editedValue : value}
+        value={isEditing ? editedValue === 0 ? "": editedValue  : value===0 ? "" : value}
         disabled={!isEditing}
         allowLeadingZeros={false}
         isNumericString={true}
@@ -67,9 +70,9 @@ export default function TableCell(props: TableCellProps): React.ReactElement {
         placeholder="$0"
       />
       )}
-      {(isEditing || props.allocation === "Manual") && (
+      {(isEditing || allocation === "Manual") && (
         <EditIcon
-          style={!editIconShow || props.allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
+          style={!editIconShow || allocation === 'Equal' ? { display: "none" } : { display: "flex" }}
           onClick={() => setIsEditing(!isEditing)}
         />
       )}

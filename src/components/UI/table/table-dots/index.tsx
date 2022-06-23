@@ -1,5 +1,5 @@
-import Options from "components/UI/options";
 import React, { useEffect, useState } from "react";
+import Options from "components/UI/options";
 import { OptionsContainer, StyledTableDots } from "./style";
 
 type Props = {

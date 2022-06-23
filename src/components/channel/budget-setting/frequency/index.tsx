@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { useDispatch } from "react-redux";
 import Dropdown from "components/UI/dropdown";
 import { FrequencyContainer, FrequencyIcon, FrequencyTitle } from "./style";

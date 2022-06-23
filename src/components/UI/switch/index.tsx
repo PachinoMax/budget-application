@@ -1,3 +1,4 @@
+import React from "react";
 import { SwitchContainer, SwitchOption } from "./style";
 import {switchOptions} from '../../../helpers/constants';
 

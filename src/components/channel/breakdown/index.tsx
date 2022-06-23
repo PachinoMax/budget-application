@@ -1,3 +1,4 @@
+import React from "react";
 import BreakdownList from "components/UI/breakdown-list";
 import { IMonth } from "redux/interfaces";
 import { BreakdownContainer, Subtitle, Title } from "./style";

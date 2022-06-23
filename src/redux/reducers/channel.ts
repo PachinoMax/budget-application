@@ -1,6 +1,6 @@
 import { months } from 'helpers/constants';
 import { Action } from 'redux/actions/channel';
-import { IChannel, IMonth } from 'redux/interfaces';
+import { IMonth } from 'redux/interfaces';
 
 interface IInitialState {
   id: string;

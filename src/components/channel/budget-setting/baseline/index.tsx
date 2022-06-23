@@ -1,6 +1,6 @@
 import Input from "components/UI/input";
 import { quarters } from "helpers/constants";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { IMonth } from "redux/interfaces";
 import { BaselineContainer, BaselineIcon, Title } from "./style";
@@ -27,8 +27,6 @@ export default function Baseline(props: BaselineProps): React.ReactElement {
   useEffect(() => {
     let sum = props.amount;
     if (props.frequency === "Quarterly") {
-      console.log('sdsd', props.months);
-      
       quarters.forEach((month, index) => {sum += props.months[index].value;});
     } else {
       props.months.forEach(month => {sum += month.value;});

@@ -1,3 +1,4 @@
+import React from "react";
 import { IMonth } from "redux/interfaces";
 import Allocation from "./allocation";
 import Baseline from "./baseline";
